@@ -1,0 +1,12 @@
+Density = 0.904607 
+True Air Speed = 116.368805 
+Stall Velocity = 52.806300 
+True Stall Velocity = 102.646998 
+Angle of Climb = 2.458893 
+Rate of Climb = 119.451753 
+Maximum rate of Climb = -168.337475 ft per minutes 
+Velocity for maximum Rate of Climb = 118.574240 knots
+Angle for Maximum Rate of Climb = 0.571669 degrees 
+Maximum Angle of Climb = -1.083326 degrees 
+Velocity for maximum Angle of Climb = 102.646998 knots
+Rate of Climb for maximum Angle of Climb = -411.552031 feet per minutes

@@ -1,0 +1,11 @@
+% You can write anything after this '%' sign
+% Please don't break the format, just change the number or the program will go mad
+
+Weight=17000; % input in kg
+initialHeight=4954; % input in feet
+finalHeight=15000; % input ft, intial
+inputVelocity=160; % input climb IAS in kts
+powerUsed=1; % in terms of full power
+dT=0; % ISA+ temperature
+loadFactor=1; % load factor
+flapAngle=0; % flap position, deg

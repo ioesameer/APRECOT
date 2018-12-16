@@ -1,0 +1,6 @@
+Density = 0.904607 
+True Air Speed = 174.553208 
+Stall Velocity = 52.806300 
+True Stall Velocity = 102.646998 
+Angle of Climb = 1.609071 
+Rate of Climb = 32.795275 

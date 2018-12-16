@@ -1,22 +1,39 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %       Aircraft Performance Calculation and Optimization Tool           %
-%                              (APRECOT)                                 %
+%                              (APCOT)                                   %
 %________________________________________________________________________%
 %                                                                        %
 %                                                                        %
 %                                                                        %
 %                                                                        %
+%                                                                        %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-function[h1,T]=altitude(d)
-%% Declaration of global variables
-% For meaning of the variable look at file named "constants.m" in utilities directory
-global d0 T0 R_gas a_atm R_earth g0
+clc;
+clear;
+inputs;
 
 
-%% Start of Actual code
-% Reference for following section is NPTEL lecture 2 in the Reference directory
-h0=0; %Reference altitude
-T=T0*(d./d0).^(-a_atm*R_gas./(g0+a_atm*R_gas));
-h2=h0+(T-T0)./a_atm;
-h1=h2*R_earth./(R_earth-h2);
+%CURRENT INPUTS
+for h=5000:5000:25000
+v=60:150;
+dT=0;
+h=5000;
+d=density2(f2m(h),dT);
+W=16000*9.8;
+
+%CALCULATION
+P=Power_req(v,d,W,0);
+SR2=C_l(W,d,v)/(c*W*C_d_flap(0,C_l(W,d,v)))
+
+fuel=P.*c;
+SR=v./fuel/1852;
+SR_max=max(SR)
+%SR_long_posn=find(abs(SR-.99*SR_max)<.001,2);
+%SR_long=SR(SR_long_posn)
+%v_SR_long=v(SR_long_posn)
+
+%GRAPHS
+plot(v,SR)
+hold on
+end
+
