@@ -2,19 +2,20 @@
 %       Aircraft Performance Calculation and Optimization Tool           %
 %                              (APCOT)                                   %
 %________________________________________________________________________%
-%  To determine power available from turboprop is a bit tricky, lets be patient  %                                 %
+%  Function that calculates Power and thrust from velocity,density and   %                                 %
 %  power used                                                            %
-%  still needs improvement; variation with speed need to be considered   %
-%  rpm torque and power need to be restudied and properly modeled        %
-%  power limit due to OAT not included                                   %
+%                                                                        %
+%                                                                        %
+%                                                                        %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function[P_a,n_pr]=powerAvailable(v,d,n_pu)
-global P_max d0
+function[T_a]=thrustAvailableForProps(v,d,n_pu)
+global P_max d0 
 %P_max=0.9.*P_max.*(d/d0).^.728%from text nita
-P_max2=0.932825.*P_max.*(d./d0).^0.739667; %Bruening 1992
+P_max=0.932825*P_max*(d/d0).^0.739667; %Bruening 1992
 %P_max=P_max.*(d/d0)^.765; %asselin/pg.no.59 %pistonprop
-% rps_prop=n_pu.*maximumRPS./gearRatio; %  rpm torque and power need to be restudied and properly modeled 
-% J=v./(rps_prop.*propellerDiameter);
+n_pr=.85;
+% rps_prop=n_pu.*maximumRPS./gearRatio;
+% J=v./(rps_prop.*prop_dia);
 % if J==0
 %     n_pr=0;
 % elseif J<.1
@@ -30,9 +31,7 @@ P_max2=0.932825.*P_max.*(d./d0).^0.739667; %Bruening 1992
 % elseif J<.6
 %     n_pr=.78;
 % else
-%     n_pr=.859;
+%     n_pr=.86;
 % end
-n_pr=0.85;
-
-P_a=n_pr.*n_pu.*P_max2;
-
+P_a=n_pr.*n_pu.*P_max;
+T_a=P_a./v;

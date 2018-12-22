@@ -19,7 +19,7 @@ global lambda Cd0 k
 % The process below is done to change equation into usable form
 % Reference is Jan Roskam VI
 
-if strcmp(flapType,'plain') %to compare if flapType is plain flap
+if strcmp(flapType,'plain') %to compare if flxapType is plain flap
      if flapAngle<=7.5
         k_profile=0; %flapChordToWingChord=ratio of chord of flap to wing chord
   
